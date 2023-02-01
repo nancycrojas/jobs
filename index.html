@@ -20,10 +20,10 @@
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
               <div class="navbar-start">
-                <button class="button navbar-item mt-2 mr-2 is-white">
+                <button class="button navbar-item mt-2 mr-2 is-white" id="btn-home">
                   Home
                 </button>
-                <button class="button navbar-item mt-2 is-white">
+                <button class="button navbar-item mt-2 is-white" id="btn-create-job">
                   Create Job
                 </button>
               </div>
@@ -33,7 +33,7 @@
     <main>
         <div class="has-background-link-light">
             <h2 class="title is-2 is-size-3-mobile has-text-centered p-6">FIND THE JOB THAT FITS YOUR LIFE</h2>
-            <form id="form" class="container">
+            <form id="filter-form" class="container">
               <div class="columns is-centered">
                 <div class="control column is-large ml-2 mr-2">
                   <div class="select is-fullwidth">
@@ -58,8 +58,8 @@
                 </div>
                 <div class="control column ml-3 mb-1">
                   <div class="buttons">
-                    <button class="button is-danger" type="submit">Search</button>
-                    <button class="button">Clear</button>   
+                    <button class="button is-danger" type="submit" id="btn-search">Search</button>
+                    <button class="button" id="btn-clear">Clear</button>   
                   </div>
                 </div>
               </div>
@@ -93,25 +93,25 @@
         </div>
         <!--Form Create Job-->
         <div class="container is-max-desktop is-hidden">
-            <form id="" class="box">
+            <form id="create-job-form" class="box">
                 <div class="field">
-                    <label class="label" for="">Job Title</label>
+                    <label class="label" for="input-job-title">Job Title</label>
                     <div class="control">
                       <input
                       class="input"
                       type="text"
-                      id=""
-                      name=""
+                      id="input-job-title"
+                      name="input-job-title"
                       placeholder="Job Title">
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label" for="">Description</label>
+                    <label class="label" for="input-description">Description</label>
                     <div class="control">
                       <textarea
                       class="textarea"
-                      name=""
-                      id=""
+                      name="input-description"
+                      id="input-description"
                       placeholder="Description"></textarea>
                     </div>
                 </div>
@@ -121,8 +121,8 @@
                       <input
                       class="input"
                       type="text"
-                      id=""
-                      name=""
+                      id="input-location"
+                      name="input-location"
                       placeholder="Location">
                     </div>
                 </div>
@@ -131,8 +131,8 @@
                       <input
                       class="input"
                       type="text"
-                      id=""
-                      name=""
+                      id="input-seniority"
+                      name="input-seniority"
                       placeholder="Seniority">
                     </div>
                 </div>
@@ -141,14 +141,14 @@
                       <input
                       class="input"
                       type="text"
-                      id=""
-                      name=""
+                      id="input-category"
+                      name="input-category"
                       placeholder="Category">
                     </div>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                      <button class="button is-danger">Submit</button>
+                      <button class="button is-danger" type="submit" id="btn-submit">Submit</button>
                     </div>
                 </div>
             </form>
@@ -180,76 +180,14 @@
               </div>
             </div>
         </div>
-        <!--Form Edit Job-->
-        <div class="container is-max-desktop is-hidden">
-            <form id="" class="box">
-                <div class="field">
-                    <label class="label" for="">Job Title</label>
-                    <div class="control">
-                      <input
-                      class="input"
-                      type="text"
-                      id=""
-                      name=""
-                      placeholder="Job Title">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label" for="">Description</label>
-                    <div class="control">
-                      <textarea
-                      class="textarea"
-                      name=""
-                      id=""
-                      placeholder="Description"></textarea>
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Tags</label>
-                    <div class="control">
-                      <input
-                      class="input"
-                      type="text"
-                      id=""
-                      name=""
-                      placeholder="Location">
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="control">
-                      <input
-                      class="input"
-                      type="text"
-                      id=""
-                      name=""
-                      placeholder="Seniority">
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="control">
-                      <input
-                      class="input"
-                      type="text"
-                      id=""
-                      name=""
-                      placeholder="Category">
-                    </div>
-                </div>
-                <div class="field is-grouped">
-                    <div class="control">
-                      <button class="button is-primary" type="submit">Edit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
         <!--Confirmation delete-->
         <div class="container is-hidden">
             <div class="notification is-danger is-light is-flex">
                 <button class="delete"></button>
                 <p class="has-text-danger"><strong>Are you sure to delete this job?</strong></p>
                 <div class="buttons control ml-3">
-                    <button class="button is-small is-danger">Delete Job</button>
-                    <button class="button is-small has-background-grey has-text-white">Cancel</button>
+                    <button class="button is-small is-danger" id="btn-delete">Delete Job</button>
+                    <button class="button is-small has-background-grey has-text-white" id="btn-delete-cancel">Cancel</button>
                 </div>
             </div>
         </div>
