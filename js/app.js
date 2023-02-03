@@ -3,6 +3,9 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
+const hideElement = (element) => element.classList.add("is-hidden");
+const showElement = (element) => element.classList.remove("is-hidden");
+
 const BASE_URL = "https://63da8f4219fffcd620cc7dcb.mockapi.io/api"
 
 //Menú hamburguesa
@@ -10,6 +13,12 @@ $(".navbar-burger").addEventListener("click",()=>{
     $(".navbar-burger").classList.toggle("is-active");
     $(".navbar-menu").classList.toggle("is-active");
 });
+
+const showCreateForm = () => {
+  hideElement($("#cards-container"));
+  hideElement($("#filters-container"));
+  showElement($("#job-container"));
+}
 
 //DOM
 const renderJobs = (jobs) => {
@@ -44,4 +53,14 @@ const renderJobs = (jobs) => {
 $("#create-job-form").addEventListener("submit", (e) => {
     e.preventDefault();
     registerJob();
+});
+
+$("#btn-create-job").addEventListener("click", () => {
+  showCreateForm();
+});
+
+$("#btn-home").addEventListener("click", () => {
+  showElement($("#cards-container"));
+  showElement($("#filters-container"));
+  hideElement($("#job-container"))
 });
