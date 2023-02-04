@@ -26,6 +26,12 @@ const showSeeDetails = () => {
   hideElement($("#cards-container"));
 }
 
+const showDeleteConfirm = () => {
+  showElement($("#container-delete-confirm"));
+  hideElement($("#cards-container"));
+  hideElement($("#container-see-details"));
+}
+
 //DOM
 const renderJobs = (jobs) => {
     $("#cards-container").innerHTML = "";
@@ -61,6 +67,10 @@ const renderJobs = (jobs) => {
         showSeeDetails();
         $(".btn-delete-job").setAttribute("data-id", id);
         $(".btn-edit-job").setAttribute("data-id", id);
+        $(".btn-delete-job").addEventListener("click", () => {
+          showDeleteConfirm();
+          $("#btn-delete").setAttribute("data-id", id);
+        });
       });
   }
 };

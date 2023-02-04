@@ -1,4 +1,7 @@
 const deleteJob = async (id) => {
+  showDeleteConfirm();
+  $("#btn-delete").addEventListener("click", async () => {
+
   try {
       await fetch(`${BASE_URL}/jobs/${id}`,{
       method: 'DELETE',
@@ -12,4 +15,6 @@ const deleteJob = async (id) => {
     window.location.href = "index.html";
   }
   
+});
+
 };
