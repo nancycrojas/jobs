@@ -30,6 +30,12 @@ const showDeleteConfirm = () => {
   showElement($("#container-delete-confirm"));
   hideElement($("#cards-container"));
   hideElement($("#container-see-details"));
+  hideElement($("#footer"));
+}
+
+const hideDeleteConfirm = () => {
+  hideElement($("#container-delete-confirm"));
+  showElement($("#cards-container"));
 }
 
 //DOM

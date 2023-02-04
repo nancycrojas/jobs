@@ -14,7 +14,9 @@ const deleteJob = async (id) => {
   } finally {
     window.location.href = "index.html";
   }
-  
+
 });
+
+$("#btn-delete-cancel").addEventListener("click", hideDeleteConfirm)
 
 };
