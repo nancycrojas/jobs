@@ -17,14 +17,20 @@ $(".navbar-burger").addEventListener("click",()=>{
 const showCreateForm = () => {
   hideElement($("#cards-container"));
   hideElement($("#filters-container"));
+  hideElement($("#container-see-details"));
   showElement($("#job-container"));
+}
+
+const showSeeDetails = () => {
+  showElement($("#container-see-details"));
+  hideElement($("#cards-container"));
 }
 
 //DOM
 const renderJobs = (jobs) => {
     $("#cards-container").innerHTML = "";
     for (const job of jobs) {
-        const { name, description, location, category, seniority } = job;
+        const { name, description, location, category, seniority, id } = job;
         $("#cards-container").innerHTML += `
               <div class="card column is-2 is-3-tablet m-4">
                 <div class="card-content">
@@ -42,14 +48,24 @@ const renderJobs = (jobs) => {
                     <p class="is-size-7 has-text-white has-background-black p-1 m-1 has-text-centered">${category}</p>
                   </div>
                   <div class="control">
-                    <button class="button is-small is-danger">See Details</button>
+                    <button class="button is-small is-danger btn-see-details" data-id="${id}">See Details</button>
                   </div>
                 </div>
               </div>
         `;
     }
+
+    for (const button of $$(".btn-see-details")) {
+      button.addEventListener("click", () => {
+        const id= button.getAttribute("data-id");
+        showSeeDetails();
+        $(".btn-delete-job").setAttribute("data-id", id);
+        $(".btn-edit-job").setAttribute("data-id", id);
+      });
+  }
 };
 
+//Eventos
 $("#create-job-form").addEventListener("submit", (e) => {
     e.preventDefault();
     registerJob();
@@ -62,5 +78,11 @@ $("#btn-create-job").addEventListener("click", () => {
 $("#btn-home").addEventListener("click", () => {
   showElement($("#cards-container"));
   showElement($("#filters-container"));
-  hideElement($("#job-container"))
+  hideElement($("#job-container"));
+  hideElement($("#container-see-details"));
+});
+
+$(".btn-delete-job").addEventListener("click", () => {
+  const id = $(".btn-delete-job").getAttribute("data-id");
+  deleteJob(id);
 });
