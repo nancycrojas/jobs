@@ -1,12 +1,6 @@
 const registerJob = async () => {
     try {
-      const job = {
-        name: $("#input-job-title").value,
-        description: $("#input-description").value,
-        location: $("#input-location").value,
-        category: $("#input-category").value,
-        seniority: $("#input-seniority").value,
-      };
+      const job = getJobForm();
   
       const response = await fetch(`${BASE_URL}/jobs`,{
         method: 'POST',

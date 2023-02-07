@@ -8,6 +8,8 @@ const showElement = (element) => element.classList.remove("is-hidden");
 
 const BASE_URL = "https://63da8f4219fffcd620cc7dcb.mockapi.io/api"
 
+let isEditing = false;
+
 //Menú hamburguesa
 $(".navbar-burger").addEventListener("click",()=>{
     $(".navbar-burger").classList.toggle("is-active");
@@ -112,6 +114,7 @@ const renderSeeDetails = ({ name, description, location, category, seniority, id
   });
 
   $(".btn-edit-job").addEventListener("click", () => {
+    isEditing = true;
     const id = $(".btn-edit-job").getAttribute("data-id");
     $("#job-container").classList.remove("is-hidden")
     hideElement($("#filters-container"));
@@ -119,20 +122,27 @@ const renderSeeDetails = ({ name, description, location, category, seniority, id
     $("#btn-submit").textContent = "Editar";
     $("#btn-submit").classList.add("is-primary");
     $("#btn-submit").classList.remove("is-danger");
-    getJob(id)
-  })
+    $("#btn-submit").setAttribute("data-id", id);
+    getJob(id);
+  });
 };
 
 //Eventos
 $("#create-job-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    registerJob();
+    if(isEditing){
+      const jobID = $("#btn-submit").getAttribute("data-id")
+      updateJob(jobID);
+    }else{
+      registerJob();
+    }
 });
 
 $("#btn-create-job").addEventListener("click", () => {
   showCreateForm();
   $("#btn-submit").classList.remove("is-primary");
   $("#btn-submit").classList.add("is-danger");
+  $("#btn-submit").textContent = "Submit";
 });
 
 $("#btn-home").addEventListener("click", () => {
