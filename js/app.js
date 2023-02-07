@@ -19,6 +19,7 @@ const showCreateForm = () => {
   hideElement($("#filters-container"));
   hideElement($("#container-see-details"));
   showElement($("#job-container"));
+  hideElement($("#container-delete-confirm"));
 }
 
 const showSeeDetails = () => {
@@ -71,14 +72,45 @@ const renderJobs = (jobs) => {
       button.addEventListener("click", () => {
         const id= button.getAttribute("data-id");
         showSeeDetails();
-        $(".btn-delete-job").setAttribute("data-id", id);
-        $(".btn-edit-job").setAttribute("data-id", id);
-        $(".btn-delete-job").addEventListener("click", () => {
-          showDeleteConfirm();
-          $("#btn-delete").setAttribute("data-id", id);
+        getJob(id);
         });
-      });
   }
+};
+
+const renderSeeDetails = ({ name, description, location, category, seniority, id}) => {
+  $("#container-see-details").innerHTML = "";
+  $("#container-see-details").innerHTML += `
+      <div class="columns is-centered mt-6">
+        <div class="card column is-2 is-3-tablet m-4">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">${name}</p>
+              </div>
+            </div>
+            <div class="content">
+              <p>${description}</p>
+            </div>
+            <div class="media is-flex-wrap-wrap">
+              <p class="is-size-7 has-text-white has-background-black p-1 m-1 has-text-centered">${location}</p>
+              <p class="is-size-7 has-text-white has-background-black p-1 m-1 has-text-centered">${seniority}</p>
+              <p class="is-size-7 has-text-white has-background-black p-1 m-1 has-text-centered">${category}</p>
+            </div>
+            <div class="control">
+              <button class="button is-small is-primary btn-edit-job" data-id="${id}">Edit Job</button>
+              <button class="button is-small is-danger btn-delete-job" data-id="${id}">Delete Job</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  `
+
+  $(".btn-delete-job").addEventListener("click", () => {
+    $(".btn-delete-job").setAttribute("data-id", id);
+    showDeleteConfirm();
+    $(".btn-delete-job").setAttribute("data-id", id);
+    $("#btn-delete").setAttribute("data-id", id);
+  });
 };
 
 //Eventos
@@ -96,7 +128,15 @@ $("#btn-home").addEventListener("click", () => {
   showElement($("#filters-container"));
   hideElement($("#job-container"));
   hideElement($("#container-see-details"));
+  hideElement($("#container-delete-confirm"));
 });
+
+$("#btn-delete").addEventListener("click", async () =>{
+  deleteJob($("#btn-delete").getAttribute("data-id"))
+});
+
+$("#btn-delete-cancel").addEventListener("click", hideDeleteConfirm)
+$(".delete").addEventListener("click", hideDeleteConfirm)
 
 $(".btn-delete-job").addEventListener("click", () => {
   const id = $(".btn-delete-job").getAttribute("data-id");

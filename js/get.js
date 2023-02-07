@@ -12,3 +12,17 @@ const getJobs = async () => {
   };
   
   getJobs();
+
+  const getJob = async (id) => {
+    try {
+      const response = await fetch(`${BASE_URL}/jobs/${id}`);
+      const job = await response.json();
+      renderSeeDetails(job)
+
+
+    } catch (error) {
+      alert("error get job")
+      
+    }
+
+  };
