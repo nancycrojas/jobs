@@ -18,7 +18,7 @@ const getJobs = async () => {
       const response = await fetch(`${BASE_URL}/jobs/${id}`);
       const job = await response.json();
       renderSeeDetails(job)
-
+      populateJobForm(job)
 
     } catch (error) {
       alert("error get job")
@@ -26,3 +26,11 @@ const getJobs = async () => {
     }
 
   };
+
+const populateJobForm = ({ name, description, location, category, seniority }) => {
+  $("#input-job-title").value = name
+  $("#input-description").value = description
+  $("#input-location").value = location
+  $("#input-seniority").value = seniority
+  $("#input-category").value = category
+};

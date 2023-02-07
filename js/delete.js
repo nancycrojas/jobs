@@ -6,7 +6,7 @@ const deleteJob = async (id) => {
     });
 
   } catch (error) {
-    console.log(error)
+    alert("Error deleting job")
         
   } finally {
     window.location.href = "index.html";

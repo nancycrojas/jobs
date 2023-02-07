@@ -108,9 +108,19 @@ const renderSeeDetails = ({ name, description, location, category, seniority, id
   $(".btn-delete-job").addEventListener("click", () => {
     $(".btn-delete-job").setAttribute("data-id", id);
     showDeleteConfirm();
-    $(".btn-delete-job").setAttribute("data-id", id);
     $("#btn-delete").setAttribute("data-id", id);
   });
+
+  $(".btn-edit-job").addEventListener("click", () => {
+    const id = $(".btn-edit-job").getAttribute("data-id");
+    $("#job-container").classList.remove("is-hidden")
+    hideElement($("#filters-container"));
+    hideElement($("#container-see-details"));
+    $("#btn-submit").textContent = "Editar";
+    $("#btn-submit").classList.add("is-primary");
+    $("#btn-submit").classList.remove("is-danger");
+    getJob(id)
+  })
 };
 
 //Eventos
@@ -121,6 +131,8 @@ $("#create-job-form").addEventListener("submit", (e) => {
 
 $("#btn-create-job").addEventListener("click", () => {
   showCreateForm();
+  $("#btn-submit").classList.remove("is-primary");
+  $("#btn-submit").classList.add("is-danger");
 });
 
 $("#btn-home").addEventListener("click", () => {

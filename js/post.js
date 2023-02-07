@@ -19,7 +19,7 @@ const registerJob = async () => {
       const jobs = await response.json();
     
     } catch (error) {
-    console.log(error);
+    alert("Error creating job");
   
     } finally {
     window.location.href = "index.html";
