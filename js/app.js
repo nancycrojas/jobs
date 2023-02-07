@@ -143,6 +143,7 @@ $("#btn-create-job").addEventListener("click", () => {
   $("#btn-submit").classList.remove("is-primary");
   $("#btn-submit").classList.add("is-danger");
   $("#btn-submit").textContent = "Submit";
+  $("#create-job-form").reset();
 });
 
 $("#btn-home").addEventListener("click", () => {
