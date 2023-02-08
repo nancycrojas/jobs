@@ -33,26 +33,23 @@
     <main>
         <div class="has-background-link-light" id="filters-container">
             <h2 class="title is-2 is-size-3-mobile has-text-centered p-6">FIND THE JOB THAT FITS YOUR LIFE</h2>
-            <form id="filter-form" class="container">
+            <form id="filter-form" class="container search">
               <div class="columns is-centered">
                 <div class="control column is-large ml-2 mr-2">
                   <div class="select is-fullwidth">
-                    <select>
-                      <option selected>Location</option>
+                    <select name="location-filter" id="location-filter">
                     </select>
                   </div>
                 </div>
                 <div class="control column is-large ml-2 mr-2">
                   <div class="select is-fullwidth">
-                    <select>
-                      <option selected>Seniority</option>
+                    <select name="seniority-filter" id="seniority-filter">
                     </select>
                   </div>
                 </div>
                 <div class="control column is-large ml-2 mr-2">
                   <div class="select is-fullwidth">
-                    <select>
-                      <option selected>Category</option>
+                    <select name="category-filter" id="category-filter">
                     </select>
                   </div>
                 </div>
@@ -160,5 +157,6 @@
     <script src="./js/post.js"></script>
     <script src="./js/delete.js"></script>
     <script src="./js/put.js"></script>
+    <script src="./js/filters.js"></script>
 </body>
 </html>

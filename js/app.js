@@ -127,6 +127,46 @@ const renderSeeDetails = ({ name, description, location, category, seniority, id
   });
 };
 
+//Filtros
+const completeOptionsSelects = (jobs) => {
+  $("#location-filter").innerHTML = `
+  <option selected>Select Location ...</option>
+  `;
+  $("#seniority-filter").innerHTML = `
+  <option selected>Select Seniority ...</option>
+  `;
+  $("#category-filter").innerHTML = `
+  <option selected>Select Category ...</option>
+  `;
+
+  const locationFilter = jobs.map((location) => location.location);
+  const setlocationFilter = new Set(locationFilter)
+
+  const seniorityFilter = jobs.map((seniority) => seniority.seniority);
+  const setseniorityFilter = new Set(seniorityFilter)
+
+  const categoryFilter = jobs.map((category) => category.category);
+  const setcategoryFilter = new Set(categoryFilter)
+
+  for(const location of setlocationFilter) {
+      $("#location-filter").innerHTML += `
+      <option value="${location}">${location}</option>
+    `;
+  }
+
+  for(const seniority of setseniorityFilter) {
+      $("#seniority-filter").innerHTML += `
+      <option value="${seniority}">${seniority}</option>
+    `;
+  }
+
+  for(const category of setcategoryFilter) {
+      $("#category-filter").innerHTML += `
+      <option value="${category}">${category}</option>
+    `;
+  }
+};
+
 //Eventos
 $("#create-job-form").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -154,14 +194,14 @@ $("#btn-home").addEventListener("click", () => {
   hideElement($("#container-delete-confirm"));
 });
 
-$("#btn-delete").addEventListener("click", async () =>{
+$("#btn-delete").addEventListener("click", () =>{
   deleteJob($("#btn-delete").getAttribute("data-id"))
 });
 
 $("#btn-delete-cancel").addEventListener("click", hideDeleteConfirm)
 $(".delete").addEventListener("click", hideDeleteConfirm)
 
-$(".btn-delete-job").addEventListener("click", () => {
-  const id = $(".btn-delete-job").getAttribute("data-id");
-  deleteJob(id);
+$(".search").addEventListener("submit", (e) => {
+  e.preventDefault();
+  filterJobs();
 });
