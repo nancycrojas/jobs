@@ -205,3 +205,7 @@ $(".search").addEventListener("submit", (e) => {
   e.preventDefault();
   filterJobs();
 });
+
+$("#btn-clear").addEventListener("click", () => {
+  $("#filter-form").reset();
+});
