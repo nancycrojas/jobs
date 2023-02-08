@@ -120,6 +120,7 @@ const renderSeeDetails = ({ name, description, location, category, seniority, id
     hideElement($("#filters-container"));
     hideElement($("#container-see-details"));
     $("#btn-submit").textContent = "Editar";
+    $("#name-error").textContent = "";
     $("#btn-submit").classList.add("is-primary");
     $("#btn-submit").classList.remove("is-danger");
     $("#btn-submit").setAttribute("data-id", id);
@@ -167,15 +168,33 @@ const completeOptionsSelects = (jobs) => {
   }
 };
 
+//Validación
+const validateForm = () => {
+  let isValid = false;
+
+  if($("#input-job-title").value.length >= 3){
+    isValid = true;
+  } else {
+    $("#name-error").textContent = "El nombre debe tener más de 3 caracteres";
+  }
+  return isValid;
+};
+
 //Eventos
 $("#create-job-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    if(isEditing){
-      const jobID = $("#btn-submit").getAttribute("data-id")
-      updateJob(jobID);
-    }else{
-      registerJob();
+
+    if(validateForm()){
+
+      if(isEditing){
+        const jobID = $("#btn-submit").getAttribute("data-id")
+        updateJob(jobID);
+      }else{
+        registerJob();
+      }
+
     }
+
 });
 
 $("#btn-create-job").addEventListener("click", () => {
