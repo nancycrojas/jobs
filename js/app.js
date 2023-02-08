@@ -55,7 +55,7 @@ const renderJobs = (jobs) => {
                     </div>
                   </div>
                   <div class="content">
-                    <p>${description}</p>
+                    <p class="is-size-7">${description}</p>
                   </div>
                   <div class="media is-flex-wrap-wrap">
                     <p class="is-size-7 has-text-white has-background-black p-1 m-1 has-text-centered">${location}</p>
@@ -202,6 +202,7 @@ $("#btn-create-job").addEventListener("click", () => {
   $("#btn-submit").classList.remove("is-primary");
   $("#btn-submit").classList.add("is-danger");
   $("#btn-submit").textContent = "Submit";
+  $("#name-error").textContent = "";
   $("#create-job-form").reset();
 });
 
