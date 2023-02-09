@@ -55,7 +55,7 @@ const renderJobs = (jobs) => {
                     </div>
                   </div>
                   <div class="content">
-                    <p class="is-size-7">${description}</p>
+                    <p class="is-size-7  is-size-6-mobile">${description}</p>
                   </div>
                   <div class="media is-flex-wrap-wrap">
                     <p class="is-size-7 has-text-white has-background-black p-1 m-1 has-text-centered">${location}</p>
